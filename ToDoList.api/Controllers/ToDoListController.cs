@@ -11,9 +11,17 @@ namespace ToDoList.api.Controllers
     [Route("api/[controller]")]
     public class ToDoList : Controller
     {
-        public ToDoList(INHibernateSessionProvider nHibernateSessionProvider, IConfiguration configuration)
+        private readonly INHibernateSessionProvider _sessionProvider;
+
+        public ToDoList(INHibernateSessionProvider sessionProvider, IConfiguration configuration)
         {
-            nHibernateSessionProvider.OpenSession(configuration);
+            _sessionProvider = sessionProvider;
+            _sessionProvider.OpenSession(configuration);
         }
+
+/*        public string GetAll()
+        {
+            _sessionProvider.Get
+        }*/
     }
 }
