@@ -1,24 +1,24 @@
-﻿using System.Configuration.Internal;
-using FluentNHibernate.Cfg;
+﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Microsoft.Extensions.Configuration;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
+using ToDoList.services.Interface;
 using ToDoList.services.Models;
 
-namespace ToDoList.services
+namespace ToDoList.services.FluentHibernate
 {
-    public static class NHibernateSessionProvider
+    public class NHibernateSessionProvider : INHibernateSessionProvider
     {
-        public static ISession OpenSessionNHibernate(IConfiguration configuration)
+        public NHibernateSessionProvider()
         {
-            var connectionString = "172.17.0.2;Database=ToDoList;Trusted_Connection=True;";
+            
+        }
+        public ISession OpenSession(IConfiguration configuration)
+        {          
             ISessionFactory sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
-                    .ConnectionString(c=>c.Server("172.17.0.2")
-                        .Database("ToDoList")
-                        .Username("SA")
-                        .Password("Kleopatra2017@@"))
+                    .ConnectionString(configuration.GetConnectionString("connectionString"))
                     .ShowSql())
 
                 // Mapping our entity
