@@ -2,9 +2,9 @@
 {
     public class TaskToDoItem
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public bool IsDone { get; set; }
+        public virtual int ID { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Description { get; set; }
+        public virtual bool IsDone { get; set; }
     }
 }
