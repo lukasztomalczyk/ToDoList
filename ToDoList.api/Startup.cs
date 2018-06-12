@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ToDoList.services;
+using ToDoList.services.Config;
 
 namespace ToDoList.api
 {
@@ -33,7 +35,7 @@ namespace ToDoList.api
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            NHibernateSessionProvider.OpenSessionNHibernate(Configuration);
             app.UseMvc();
         }
     }
