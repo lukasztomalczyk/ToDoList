@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentNHibernate.Cfg;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ToDoList.services;
-using ToDoList.services.Interface;
+using ToDoList.services.FluentHibernate;
 
 namespace ToDoList.api
 {
@@ -25,7 +26,14 @@ namespace ToDoList.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<INHibernateSessionProvider>();
+            services.AddSingleton<NHibernate.ISessionFactory>(
+                NHibernateSessionProvider.NHibernateSessionFactory(Configuration));
+            services.AddScoped<NHibernate.ISession>(factory =>
+                factory
+                    .GetServices<NHibernate.ISessionFactory>()
+                    .First()
+                    .OpenSession()
+            );
             services.AddMvc();
         }
 

@@ -11,7 +11,7 @@ namespace ToDoList.services.Mappings
     {
         public TaskToDoItemMap()
         {
-            Table("Task");
+            Table("TaskToDoItem");
                 
             Id(x => x.ID);
             Map(x => x.Name)

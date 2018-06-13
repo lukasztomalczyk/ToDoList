@@ -3,20 +3,15 @@ using FluentNHibernate.Cfg.Db;
 using Microsoft.Extensions.Configuration;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
-using ToDoList.services.Interface;
 using ToDoList.services.Models;
 
 namespace ToDoList.services.FluentHibernate
 {
-    public class NHibernateSessionProvider : INHibernateSessionProvider
+    public static class NHibernateSessionProvider
     {
-        public NHibernateSessionProvider()
-        {
-            
-        }
-        public ISession OpenSession(IConfiguration configuration)
+        public static ISessionFactory NHibernateSessionFactory(IConfiguration configuration)
         {          
-            ISessionFactory sessionFactory = Fluently.Configure()
+            return Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
                     .ConnectionString(configuration.GetConnectionString("connectionString"))
                     .ShowSql())
@@ -28,10 +23,8 @@ namespace ToDoList.services.FluentHibernate
                 // Create your schema at runtime.
                 .ExposeConfiguration(cfg => new SchemaExport(cfg)
                     .Create(false, false))
+                .BuildConfiguration()
                 .BuildSessionFactory();
-
-            return sessionFactory.OpenSession();
-
         }
     }
 }

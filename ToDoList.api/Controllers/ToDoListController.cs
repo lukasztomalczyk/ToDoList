@@ -4,24 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using ToDoList.services.Interface;
+using NHibernate;
 
 namespace ToDoList.api.Controllers
 {
     [Route("api/[controller]")]
     public class ToDoList : Controller
     {
-        private readonly INHibernateSessionProvider _sessionProvider;
+        private readonly ISession _dataBase;
 
-        public ToDoList(INHibernateSessionProvider sessionProvider, IConfiguration configuration)
+        public ToDoList(NHibernate.ISession dataBase)
         {
-            _sessionProvider = sessionProvider;
-            _sessionProvider.OpenSession(configuration);
+            _dataBase = dataBase;
         }
-
-/*        public string GetAll()
+        // ToDo Command–query separation
+        [HttpGet]
+        public ToDoList Get()
         {
-            _sessionProvider.Get
-        }*/
+            return _dataBase.Get<ToDoList>(1);
+        }
     }
 }
