@@ -71,6 +71,12 @@ namespace ToDoList.services.Services
                 throw new CouldNotDeleteTaskException();
             }
         }
+
+        // ToDo co zwraca ta metoda
+        public IQueryable<TaskToDoItem> Find(int id)
+        {
+            return _session.Query<TaskToDoItem>().Where(x => x.ID == id);
+        }
         
     }
 }

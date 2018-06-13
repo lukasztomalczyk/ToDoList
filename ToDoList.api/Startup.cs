@@ -35,6 +35,7 @@ namespace ToDoList.api
                     .First()
                     .OpenSession()
             );
+            //ToDo zamiast klasy wrzucic do kontenera interfejs, doczytac o kontenerach
             services.AddScoped<ToDoListServices>();
             services.AddMvc();
         }
