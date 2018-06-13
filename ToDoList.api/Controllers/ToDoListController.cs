@@ -13,23 +13,19 @@ namespace ToDoList.api.Controllers
     [Route("api/[controller]")]
     public class ToDoList : Controller
     {
-        private readonly ToDoListServices _dataBase;
+        private readonly ToDoListServices _toDoListServices;
 
-        public ToDoList(ToDoListServices dataBase)
+        public ToDoList(ToDoListServices toDoListServices)
         {
-            _dataBase = dataBase;
+            _toDoListServices = toDoListServices;
         }
         // ToDo Command–query separation
-//        [HttpGet("GetAll")]
-//        public List<TaskToDoItem> GetAll()
-//        {
-//            return _dataBase.Query<TaskToDoItem>().ToList();
-//        }
+
 
         [HttpGet("GetById/{id}")]
         public TaskToDoItem GetById(int id)
         {
-            return _dataBase.GetById(id);
+            return _toDoListServices.GetById(id);
         }
     }
 }
