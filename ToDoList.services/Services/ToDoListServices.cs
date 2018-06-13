@@ -3,10 +3,11 @@ using System.Linq;
 using NHibernate;
 using ToDoList.services.Exceptions;
 using ToDoList.services.Models;
+using ToDoList.services.Services.Abstract;
 
 namespace ToDoList.services.Services
 {
-    public class ToDoListServices
+    public class ToDoListServices : IToDoListServices
     {
         private readonly ISession _session;
 
