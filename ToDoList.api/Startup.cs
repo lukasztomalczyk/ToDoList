@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ToDoList.services;
 using ToDoList.services.FluentHibernate;
+using ToDoList.services.Services;
 
 namespace ToDoList.api
 {
@@ -34,6 +35,7 @@ namespace ToDoList.api
                     .First()
                     .OpenSession()
             );
+            services.AddScoped<ToDoListServices>();
             services.AddMvc();
         }
 

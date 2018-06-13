@@ -1,5 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 using NHibernate;
+using ToDoList.services.Exceptions;
 using ToDoList.services.Models;
 
 namespace ToDoList.services.Services
@@ -17,12 +19,57 @@ namespace ToDoList.services.Services
         {
             if (id!=0)
             {
-                throw new NotImplementedException();
+                return _session.Get<TaskToDoItem>(id);
             }
             else
             {
-                throw new NotImplementedException();
+                throw new BadIdTaskToDoException();
             }
         }
+
+        public List<TaskToDoItem> GetAllTaskToDo()
+        {
+            return _session.Query<TaskToDoItem>().ToList();
+        }
+
+        public void UpdateTask(TaskToDoItem item)
+        {
+            if (item != null)
+            {
+                _session.Update(item);
+                _session.Transaction.Commit();
+            }
+            else
+            {
+                throw new BadItemToUpdateException();
+            }
+        }
+
+        public void CreateNewTaskToDo(TaskToDoItem item)
+        {
+            if (item != null)
+            {
+                _session.Save(item);
+                _session.Transaction.Commit();
+            }
+            else
+            {
+                throw new CouldNotCreateNewTaskException();
+            }
+        }
+
+        public void DeleteTask(TaskToDoItem item)
+        {
+            if (item != null)
+            {
+                _session.Delete(item);
+                _session.Transaction.Commit();
+            }
+            else
+            {
+                throw new CouldNotDeleteTaskException();
+            }
+        }
+        
     }
 }
