@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using NHibernate;
+using ToDoList.services.Models;
 
 namespace ToDoList.api.Controllers
 {
@@ -19,9 +20,9 @@ namespace ToDoList.api.Controllers
         }
         // ToDo Command–query separation
         [HttpGet]
-        public ToDoList Get()
+        public List<TaskToDoItem> Get()
         {
-            return _dataBase.Get<ToDoList>(1);
+            return _dataBase.Query<TaskToDoItem>().ToList();
         }
     }
 }

@@ -16,6 +16,7 @@ namespace ToDoList.services.FluentHibernate
                     .ConnectionString(configuration.GetConnectionString("connectionString"))
                     .ShowSql())
 
+
                 // Mapping our entity
                 .Mappings(m => m.FluentMappings
                     .AddFromAssemblyOf<TaskToDoItem>())

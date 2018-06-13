@@ -27,7 +27,7 @@ namespace ToDoList.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<NHibernate.ISessionFactory>(
-                NHibernateSessionProvider.NHibernateSessionFactory(Configuration));
+                ToDoList.services.FluentHibernate.NHibernateSessionProvider.NHibernateSessionFactory(Configuration));
             services.AddScoped<NHibernate.ISession>(factory =>
                 factory
                     .GetServices<NHibernate.ISessionFactory>()

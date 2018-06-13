@@ -11,9 +11,11 @@ namespace ToDoList.services.Mappings
     {
         public TaskToDoItemMap()
         {
-            Table("TaskToDoItem");
+//            Table("TaskToDoItem");
                 
-            Id(x => x.ID);
+            Id(x => x.ID)
+                .GeneratedBy
+                .Increment();;
             Map(x => x.Name)
                 .Not.Nullable();
             Map(x => x.Description)
