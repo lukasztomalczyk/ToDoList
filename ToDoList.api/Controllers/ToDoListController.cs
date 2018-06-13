@@ -19,10 +19,16 @@ namespace ToDoList.api.Controllers
             _dataBase = dataBase;
         }
         // ToDo Command–query separation
-        [HttpGet]
-        public List<TaskToDoItem> Get()
+        [HttpGet("GetAll")]
+        public List<TaskToDoItem> GetAll()
         {
             return _dataBase.Query<TaskToDoItem>().ToList();
+        }
+
+        [HttpGet("GetById/{id}")]
+        public TaskToDoItem GetById(int id)
+        {
+            return _dataBase.Get<TaskToDoItem>(id);
         }
     }
 }
