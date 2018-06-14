@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using NHibernate;
 using ToDoList.services.Models;
-using ToDoList.services.Services;
 using ToDoList.services.Services.Abstract;
 
 namespace ToDoList.api.Controllers
@@ -67,5 +61,22 @@ namespace ToDoList.api.Controllers
                 return BadRequest(ModelState);
             }
         }
+        
+        [HttpPut]
+        [ProducesResponseType(200, Type = typeof(TaskToDoItem))]
+        [ProducesResponseType(400)]
+        public IActionResult Update([FromBody] TaskToDoItem taskToDoItem)
+        {
+            if (ModelState.IsValid)
+            {
+                _toDoListServices.UpdateTask(taskToDoItem);
+                return Ok(taskToDoItem);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
+        
     }
 }
