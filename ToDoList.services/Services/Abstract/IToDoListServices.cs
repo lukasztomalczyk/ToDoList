@@ -6,7 +6,7 @@ namespace ToDoList.services.Services.Abstract
     public interface IToDoListServices
     {
         TaskToDoItem GetById(int id);
-        List<TaskToDoItem> GetAllTaskToDo();
+        IEnumerable<TaskToDoItem> GetAllTaskToDo();
         void UpdateTask(TaskToDoItem item);
         void CreateNewTaskToDo(TaskToDoItem item);
         void DeleteTask(TaskToDoItem item);

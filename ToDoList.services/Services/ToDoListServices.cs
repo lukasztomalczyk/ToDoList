@@ -28,7 +28,7 @@ namespace ToDoList.services.Services
             }
         }
 
-        public List<TaskToDoItem> GetAllTaskToDo()
+        public IEnumerable<TaskToDoItem> GetAllTaskToDo()
         {
             return _session.Query<TaskToDoItem>().ToList();
         }
@@ -50,6 +50,7 @@ namespace ToDoList.services.Services
         {
             if (item != null)
             {
+                _session.BeginTransaction();
                 _session.Save(item);
                 _session.Transaction.Commit();
             }

@@ -28,7 +28,27 @@ namespace ToDoList.api.Controllers
         {
             return _toDoListServices.GetById(id);
         }
-        
-        
+
+        [HttpGet("GetAll")]
+        public IEnumerable<TaskToDoItem> GetAll()
+        {
+            return _toDoListServices.GetAllTaskToDo();
+        }
+
+        [HttpPost]
+        [ProducesResponseType(200, Type = typeof(TaskToDoItem))]
+        [ProducesResponseType(400)]
+        public IActionResult Create([FromBody] TaskToDoItem taskToDoItem)
+        {
+            if (ModelState.IsValid)
+            {
+                _toDoListServices.CreateNewTaskToDo(taskToDoItem);
+                return BadRequest(taskToDoItem);
+            }
+            else
+            {
+                return Ok(taskToDoItem);
+            }
+        }
     }
 }
