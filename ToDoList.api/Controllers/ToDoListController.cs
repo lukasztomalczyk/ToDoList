@@ -38,16 +38,33 @@ namespace ToDoList.api.Controllers
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(TaskToDoItem))]
         [ProducesResponseType(400)]
+        [ValidateAntiForgeryToken]
         public IActionResult Create([FromBody] TaskToDoItem taskToDoItem)
         {
             if (ModelState.IsValid)
             {
                 _toDoListServices.CreateNewTaskToDo(taskToDoItem);
-                return BadRequest(taskToDoItem);
+                return Ok(taskToDoItem);
             }
             else
             {
+                return BadRequest(ModelState);
+            }
+        }
+
+        [HttpDelete]
+        [ProducesResponseType(200, Type = typeof(TaskToDoItem))]
+        [ProducesResponseType(400)]
+        public IActionResult Delete([FromBody] TaskToDoItem taskToDoItem)
+        {
+            if (ModelState.IsValid)
+            {
+                _toDoListServices.DeleteTask(taskToDoItem);
                 return Ok(taskToDoItem);
+            }
+            else
+            {
+                return BadRequest(ModelState);
             }
         }
     }
