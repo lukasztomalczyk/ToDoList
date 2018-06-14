@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NHibernate;
 using ToDoList.services.Exceptions;
@@ -20,7 +21,14 @@ namespace ToDoList.services.Services
         {
             if (id!=0)
             {
-                return _session.Get<TaskToDoItem>(id);
+                try
+                {
+                    return _session.Get<TaskToDoItem>(id);
+                }
+                catch (Exception)
+                {
+                    throw new CouldNotGetTheTaskException();
+                }
             }
             else
             {
@@ -37,6 +45,7 @@ namespace ToDoList.services.Services
         {
             if (item != null)
             {
+                _session.BeginTransaction();
                 _session.Update(item);
                 _session.Transaction.Commit();
             }
@@ -64,6 +73,7 @@ namespace ToDoList.services.Services
         {
             if (item != null)
             {
+                _session.BeginTransaction();
                 _session.Delete(item);
                 _session.Transaction.Commit();
             }
@@ -74,7 +84,7 @@ namespace ToDoList.services.Services
         }
 
         // ToDo co zwraca ta metoda
-        public IQueryable<TaskToDoItem> Find(int id)
+        public IEnumerable<TaskToDoItem> Find(int id)
         {
             return _session.Query<TaskToDoItem>().Where(x => x.ID == id);
         }
