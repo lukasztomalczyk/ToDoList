@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using ToDoList.services;
 using ToDoList.services.FluentHibernate;
 using ToDoList.services.Services;
+using ToDoList.services.Services.Abstract;
 
 namespace ToDoList.api
 {
@@ -36,7 +37,7 @@ namespace ToDoList.api
                     .OpenSession()
             );
             //ToDo zamiast klasy wrzucic do kontenera interfejs, doczytac o kontenerach
-            services.AddScoped<ToDoListServices>();
+            services.AddScoped<IToDoListServices, ToDoListServices>();
             services.AddMvc();
         }
 

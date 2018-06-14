@@ -7,15 +7,16 @@ using Microsoft.Extensions.Configuration;
 using NHibernate;
 using ToDoList.services.Models;
 using ToDoList.services.Services;
+using ToDoList.services.Services.Abstract;
 
 namespace ToDoList.api.Controllers
 {
     [Route("api/[controller]")]
     public class ToDoList : Controller
     {
-        private readonly ToDoListServices _toDoListServices;
+        private readonly IToDoListServices _toDoListServices;
 
-        public ToDoList(ToDoListServices toDoListServices)
+        public ToDoList(IToDoListServices toDoListServices)
         {
             _toDoListServices = toDoListServices;
         }
@@ -27,5 +28,7 @@ namespace ToDoList.api.Controllers
         {
             return _toDoListServices.GetById(id);
         }
+        
+        
     }
 }
