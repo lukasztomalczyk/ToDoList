@@ -36,7 +36,7 @@ namespace ToDoList.services.Services
             }
         }
 
-        public IEnumerable<TaskToDoItem> GetAllTaskToDo()
+        public List<TaskToDoItem> GetAllTaskToDo()
         {
             return _session.Query<TaskToDoItem>().ToList();
         }
