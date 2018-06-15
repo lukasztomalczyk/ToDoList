@@ -86,7 +86,7 @@ namespace ToDoList.services.Services
         // ToDo co zwraca ta metoda
         public IEnumerable<TaskToDoItem> Find(int id)
         {
-            return _session.Query<TaskToDoItem>().Where(x => x.ID == id);
+            return _session.Query<TaskToDoItem>().Where(x => x.Id == id);
         }
         
     }

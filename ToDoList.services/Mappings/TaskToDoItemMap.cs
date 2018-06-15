@@ -13,13 +13,17 @@ namespace ToDoList.services.Mappings
         {
 //            Table("TaskToDoItem");
                 
-            Id(x => x.ID)
+            Id(x => x.Id)
                 .GeneratedBy
                 .Increment();;
             Map(x => x.Name)
                 .Not.Nullable();
             Map(x => x.Description)
                 .Nullable();
+            Map(x => x.CreationDate)
+                .Not.Nullable();
+            Map(x => x.DateOfCompletion)
+                .Not.Nullable();
             Map(x => x.IsDone);   
         }
     }
