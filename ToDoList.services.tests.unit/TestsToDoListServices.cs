@@ -11,11 +11,11 @@ using NUnit.Framework;
 namespace ToDoList.services.tests.unit
 {
     [TestFixture]
-    public class Tests_ToDoListServices
+    public class TestsToDoListServices
     {
         private readonly IEnumerable<TaskToDoItem> _fakeDataBase;
 
-        public Tests_ToDoListServices()
+        public TestsToDoListServices()
         {
             _fakeDataBase = new List<TaskToDoItem>()
             {
