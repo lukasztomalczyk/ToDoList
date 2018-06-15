@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 using ToDoList.services;
 using ToDoList.services.FluentHibernate;
 using ToDoList.services.Services;
@@ -36,8 +37,8 @@ namespace ToDoList.api
                     .First()
                     .OpenSession()
             );
-            //ToDo zamiast klasy wrzucic do kontenera interfejs, doczytac o kontenerach
             services.AddScoped<IToDoListServices, ToDoListServices>();
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info{ Title = "ToDoList API", Version = "v1" }); });
             services.AddMvc();
         }
 
@@ -49,6 +50,9 @@ namespace ToDoList.api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "ToDoList API V1");});
             app.UseMvc();
         }
     }
