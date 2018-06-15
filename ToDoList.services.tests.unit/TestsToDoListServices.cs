@@ -33,7 +33,7 @@ namespace ToDoList.services.tests.unit
         {
             // Arrange
             Mock<ISession> sessionMock = new Mock<ISession>();
-            sessionMock.Setup(p => p.Query<TaskToDoItem>()).Returns();
+            sessionMock.Setup(p => p.Query<TaskToDoItem>()).Returns(_fakeDataBase.AsQueryable);
             // Act
             var toDoService = new ToDoListServices(sessionMock.Object);
             var result = toDoService.GetAllTaskToDo();
