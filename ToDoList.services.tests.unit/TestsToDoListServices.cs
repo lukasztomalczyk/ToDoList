@@ -7,6 +7,7 @@ using System.Linq;
 using FluentAssertions;
 using Moq;
 using NHibernate;
+using NHibernate.Loader.Custom;
 using NHibernate.Type;
 using ToDoList.services.Models;
 using NUnit;
@@ -34,8 +35,8 @@ namespace ToDoList.services.tests.unit
             // Arrange
             Mock<ISession> sessionMock = new Mock<ISession>();
             sessionMock.Setup(p => p.Query<TaskToDoItem>()).Returns(_fakeDataBase.AsQueryable);
-            // Act
             var toDoService = new ToDoListServices(sessionMock.Object);
+            // Act
             var result = toDoService.GetAllTaskToDo();
             // Assert
             result.Should().Equal(_fakeDataBase);
@@ -47,11 +48,29 @@ namespace ToDoList.services.tests.unit
             // Arrange
             Mock<ISession> sessionMock = new Mock<ISession>();
             sessionMock.Setup(p => p.Get<TaskToDoItem>(1)).Returns(_fakeDataBase[1]);
-            // Act
             var toDoService = new ToDoListServices(sessionMock.Object);
+            // Act
             var result = toDoService.GetById(1);
             // Assert
             result.Should().Be(_fakeDataBase[1]);
+        }
+
+//        [Test]
+//        public void CreateNewTaskToDo_CreatingNewTask_ShouldReturn()
+//        {
+//            throw new NotImplementedException();
+//        }
+
+        [Test]
+        public void CreateNewTaskToDo_PassingNullObject_ShouldReturnFalse()
+        {
+            // Arrange
+            Mock<ISession> sessionMock = new Mock<ISession>();
+            var toDoService = new ToDoListServices(sessionMock.Object);
+            // Act
+            var result = toDoService.CreateNewTaskToDo(null);
+            // Assert
+            result.Should().BeFalse();
         }
      }
 }

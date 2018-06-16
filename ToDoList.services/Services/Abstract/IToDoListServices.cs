@@ -8,7 +8,7 @@ namespace ToDoList.services.Services.Abstract
         TaskToDoItem GetById(int id);
         List<TaskToDoItem> GetAllTaskToDo();
         void UpdateTask(TaskToDoItem item);
-        void CreateNewTaskToDo(TaskToDoItem item);
+        bool CreateNewTaskToDo(TaskToDoItem item);
         void DeleteTask(TaskToDoItem item);
     }
 }

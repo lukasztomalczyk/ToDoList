@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentNHibernate.Conventions;
 using NHibernate;
 using ToDoList.services.Exceptions;
 using ToDoList.services.Models;
@@ -11,6 +12,7 @@ namespace ToDoList.services.Services
     public class ToDoListServices : IToDoListServices
     {
         private readonly ISession _session;
+        private ITransaction _transaction; 
 
         public ToDoListServices(ISession session)
         {
@@ -19,7 +21,7 @@ namespace ToDoList.services.Services
 
         public TaskToDoItem GetById(int id)
         {
-            if (id!=0)
+            if (id != 0)
             {
                 try
                 {
@@ -55,17 +57,26 @@ namespace ToDoList.services.Services
             }
         }
 
-        public void CreateNewTaskToDo(TaskToDoItem item)
+        public bool CreateNewTaskToDo(TaskToDoItem item)
         {
             if (item != null)
             {
-                _session.BeginTransaction();
-                _session.Save(item);
-                _session.Transaction.Commit();
+                try
+                {
+                    _transaction = _session.BeginTransaction();
+                    _session.Save(item);
+                    _transaction.Commit();
+                    return true;
+                }
+                catch
+                {
+                    _transaction?.Rollback();
+                    throw new CouldNotCreateNewTaskException();
+                }
             }
             else
             {
-                throw new CouldNotCreateNewTaskException();
+                return false;
             }
         }
 
