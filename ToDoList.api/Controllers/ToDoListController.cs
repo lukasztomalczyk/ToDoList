@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.services.Models;
 using ToDoList.services.Services.Abstract;
@@ -18,9 +19,10 @@ namespace ToDoList.api.Controllers
 
 
         [HttpGet("GetById/{id}")]
-        public TaskToDoItem GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            return _toDoListServices.GetById(id);
+            var result = await _toDoListServices.GetById(id);
+            return Ok();
         }
 
         [HttpGet("GetAll")]

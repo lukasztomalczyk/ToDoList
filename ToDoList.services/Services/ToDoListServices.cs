@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using FluentNHibernate.Conventions;
 using NHibernate;
 using ToDoList.services.Exceptions;
@@ -19,13 +20,13 @@ namespace ToDoList.services.Services
             _session = session;
         }
 
-        public TaskToDoItem GetById(int id)
+        public async Task<TaskToDoItem> GetById(int id)
         {
             if (id != 0)
             {
                 try
                 {
-                    return _session.Get<TaskToDoItem>(id);
+                    var result = await _session.GetAsync<TaskToDoItem>(id);
                 }
                 catch (Exception)
                 {
