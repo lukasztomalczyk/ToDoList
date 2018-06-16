@@ -26,16 +26,7 @@ namespace ToDoList.services.Services
             {
                 try
                 {
-                    var result = await _session.GetAsync<TaskToDoItem>(id);
-                    if (result != null)
-                    {
-                        return result;
-                    }
-                    else
-                    {
-                        throw new ThereIsNoSuchTaskException();
-                    }
-
+                    return await _session.GetAsync<TaskToDoItem>(id);
                 }
                 catch (Exception)
                 {
