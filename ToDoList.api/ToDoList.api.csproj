@@ -15,4 +15,23 @@
   <ItemGroup>
     <ProjectReference Include="..\ToDoList.services\ToDoList.services.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Docker\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Docker\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Docker\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Docker\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Docker\web.config" />
+    <_ContentIncludedByDefault Remove="Docker\appsettings.Development.json" />
+    <_ContentIncludedByDefault Remove="Docker\appsettings.json" />
+    <_ContentIncludedByDefault Remove="Docker\ToDoList.api.deps.json" />
+    <_ContentIncludedByDefault Remove="Docker\ToDoList.api.runtimeconfig.json" />
+  </ItemGroup>
 </Project>
