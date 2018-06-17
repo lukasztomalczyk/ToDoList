@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
 using NHibernate;
@@ -13,6 +14,7 @@ using ToDoList.services.Models;
 using NUnit;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
+using ToDoList.services.Exceptions;
 using ToDoList.services.Services;
 using ToDoList.services.Services.Abstract;
 
@@ -52,9 +54,17 @@ namespace ToDoList.services.tests.unit
             // Act
             var result = toDoService.GetById(1);
             // Assert
-            result.Should().Be(_fakeDataBase[1]);
+            result.Should().Equals(_fakeDataBase[1]);
         }
-
+//
+//        [Test]
+//        public void GetById_Exceptions_ShouldThrowBadIdException()
+//        {
+//            Mock<ISession> sessionMock = new Mock<ISession>();
+//            sessionMock.Setup(p => p.GetAsync<TaskToDoItem>(0))
+//                .Returns();
+//        }
+        
 //        [Test]
 //        public void CreateNewTaskToDo_CreatingNewTask_ShouldReturn()
 //        {
