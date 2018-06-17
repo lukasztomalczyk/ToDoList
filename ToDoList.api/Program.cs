@@ -20,7 +20,7 @@ namespace ToDoList.api
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseContentRoot("ToDoList.api/")
                 .ConfigureAppConfiguration((builderContext, config) =>
                 {
                     IHostingEnvironment env = builderContext.HostingEnvironment;
