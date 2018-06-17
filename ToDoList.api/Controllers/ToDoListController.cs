@@ -8,11 +8,11 @@ using ToDoList.services.Services.Abstract;
 namespace ToDoList.api.Controllers
 {
     [Route("api/[controller]")]
-    public class ToDoList : Controller
+    public class ToDoListController : Controller
     {
         private readonly IToDoListServices _toDoListServices;
 
-        public ToDoList(IToDoListServices toDoListServices)
+        public ToDoListController(IToDoListServices toDoListServices)
         {
             _toDoListServices = toDoListServices;
         }
