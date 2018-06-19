@@ -23,7 +23,7 @@ namespace ToDoList.services.FluentHibernate
                 
                 // Create your schema at runtime.
                 .ExposeConfiguration(cfg => new SchemaExport(cfg)
-                    .Create(false, false))
+                    .Create(true, true))
                 .BuildConfiguration()
                 .BuildSessionFactory();
         }
