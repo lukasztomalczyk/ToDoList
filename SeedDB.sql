@@ -1,0 +1,1 @@
+ INSERT INTO [master].[dbo].[TaskToDoItem] ([Id], [Name], [Description], [CreationDate], [DateOfCompletion], [IsDone]) VALUES (1, 'name', 'Opis', '2018-06-19 17:47:11.9150000', '2018-06-19 17:47:18.8320000', 1)
