@@ -22,20 +22,20 @@ Use the swagger to view the API documentation
 `http://localhost:[port]/swagger/`
 
 - Available requests:<br>
-GET 
+* GET <br>
 ``
 curl -X GET "http://localhost:5000/api/ToDoList/GetById/1" -H "accept: text/plain"
      http://localhost:5000/api/ToDoList/GetById/1
      ``
      <br><br>
-GET all resources <br>
+* GET all resources <br>
 ``
 curl -X GET "http://localhost:5000/api/ToDoList/GetAll" -H "accept: text/plain"
       http://localhost:5000/api/ToDoList/GetAll
 ``
 <br>
-POST, PUT, DELETE<br>
-<br>
+* POST, PUT, DELETE<br>
+<br><br>
 
 * <b>Model entity</b>
 ````````
@@ -49,4 +49,5 @@ POST, PUT, DELETE<br>
 }
 ````````
 <br>
-
+<h1>I invite you to visit my blog</h1>
+<a href="http://juniordevops.pl" target="_blank">www.JuniorDevOps.pl</a>
