@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{D24565
 ProjectSection(SolutionItems) = preProject
 	dockerfile = dockerfile
 	docker-compose.yml = docker-compose.yml
+	.travis.yml = .travis.yml
+	scripts\dotnet-build.sh = scripts\dotnet-build.sh
+	scripts\dotnet-publish.sh = scripts\dotnet-publish.sh
+	scripts\dotnet-test.sh = scripts\dotnet-test.sh
 EndProjectSection
 EndProject
 Global
