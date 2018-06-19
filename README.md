@@ -21,12 +21,13 @@ Applications can be downloaded from the hub docker:
 Use the swagger to view the API documentation
 `http://localhost:[port]/swagger/`
 
-- Available requests:
- <b>GET</b> by id `curl -X GET "http://localhost:5000/api/ToDoList/GetById/1" -H "accept: text/plain"`<br>
-     endpoint: `http://localhost:5000/api/ToDoList/GetById/1`<br>
-<b>GET</b> all resources `curl -X GET "http://localhost:5000/api/ToDoList/GetAll" -H "accept: text/plain"`<br>
-     enpoint: `http://localhost:5000/api/ToDoList/GetAll`<br>
-<b>POST</p><br>
+- Available requests:<br>
+GET `curl -X GET "http://localhost:5000/api/ToDoList/GetById/1" -H "accept: text/plain"`<br>
+     `http://localhost:5000/api/ToDoList/GetById/1`<br>
+GET all resources `curl -X GET "http://localhost:5000/api/ToDoList/GetAll" -H "accept: text/plain"`<br>
+      `http://localhost:5000/api/ToDoList/GetAll`<br>
+POST, PUT, DELETE<br>
+<b>model entity</b>
 ```
 {
   "id": 0,
@@ -37,4 +38,5 @@ Use the swagger to view the API documentation
   "isDone": true
 }
 ```
-    endpoint: `http://localhost:5000/api/ToDoList`
+<br>
+
