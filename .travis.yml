@@ -7,7 +7,7 @@ branches:
   only:
     - master
 before_script:
-  - chmod -r a+x scripts
+  - chmod -r 764 scripts
 script:
   - ./scripts/dotnet-build.sh
   - ./scripts/dotnet-test.sh
