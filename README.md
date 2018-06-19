@@ -23,22 +23,22 @@ Use the swagger to view the API documentation
 
 - Available requests:<br>
 GET 
-```
+``
 curl -X GET "http://localhost:5000/api/ToDoList/GetById/1" -H "accept: text/plain"
      http://localhost:5000/api/ToDoList/GetById/1
-     ```
+     ``
      <br><br>
 GET all resources <br>
-```
+``
 curl -X GET "http://localhost:5000/api/ToDoList/GetAll" -H "accept: text/plain"
       http://localhost:5000/api/ToDoList/GetAll
-```
+``
 <br>
 POST, PUT, DELETE<br>
 <br>
 
 * <b>Model entity</b>
-```
+````````
 {
   "id": 0,
   "name": "string",
@@ -47,6 +47,6 @@ POST, PUT, DELETE<br>
   "dateOfCompletion": "datetime",
   "isDone": true
 }
-```
+````````
 <br>
 
