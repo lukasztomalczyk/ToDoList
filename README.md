@@ -22,12 +22,22 @@ Use the swagger to view the API documentation
 `http://localhost:[port]/swagger/`
 
 - Available requests:<br>
-GET `curl -X GET "http://localhost:5000/api/ToDoList/GetById/1" -H "accept: text/plain"`<br>
-     `http://localhost:5000/api/ToDoList/GetById/1`<br>
-GET all resources `curl -X GET "http://localhost:5000/api/ToDoList/GetAll" -H "accept: text/plain"`<br>
-      `http://localhost:5000/api/ToDoList/GetAll`<br>
+GET 
+```
+curl -X GET "http://localhost:5000/api/ToDoList/GetById/1" -H "accept: text/plain"
+     http://localhost:5000/api/ToDoList/GetById/1
+     ```
+     <br><br>
+GET all resources <br>
+```
+curl -X GET "http://localhost:5000/api/ToDoList/GetAll" -H "accept: text/plain"
+      http://localhost:5000/api/ToDoList/GetAll
+```
+<br>
 POST, PUT, DELETE<br>
-<b>model entity</b>
+<br>
+
+* <b>Model entity</b>
 ```
 {
   "id": 0,
