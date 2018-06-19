@@ -1,6 +1,6 @@
 language: csharp
 sudo: required
-dotnet: 2.1.200
+dotnet: 2.0.7
 services:
   - mysql
 branches:
@@ -8,6 +8,8 @@ branches:
     - master
 before_script:
   - sudo chmod -R 764 ./scripts
+  - pwd
+  - ls -a
 script:
   - ./scripts/dotnet-build.sh
   - ./scripts/dotnet-test.sh
