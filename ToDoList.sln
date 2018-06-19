@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.services.tests.uni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.api.tests.unit", "ToDoList.api.tests.unit\ToDoList.api.tests.unit.csproj", "{5B50DE71-F439-4102-A7B8-6BC9EDAA1112}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{95A97346-C293-4F81-A13D-621103824CC9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{D24565A4-6FA3-4C21-A561-A9747819BB8D}"
 ProjectSection(SolutionItems) = preProject
 	dockerfile = dockerfile
 	docker-compose.yml = docker-compose.yml
