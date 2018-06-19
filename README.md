@@ -22,11 +22,11 @@ Use the swagger to view the API documentation
 `http://localhost:[port]/swagger/`
 
 - Available requests:
- <b>GET</b> by id `curl -X GET "http://localhost:5000/api/ToDoList/GetById/1" -H "accept: text/plain"`
-     endpoint: `http://localhost:5000/api/ToDoList/GetById/1`
-<b>GET</b> all resources `curl -X GET "http://localhost:5000/api/ToDoList/GetAll" -H "accept: text/plain"`
-     enpoint: `http://localhost:5000/api/ToDoList/GetAll`
-<b>POST</p>
+ <b>GET</b> by id `curl -X GET "http://localhost:5000/api/ToDoList/GetById/1" -H "accept: text/plain"`<br>
+     endpoint: `http://localhost:5000/api/ToDoList/GetById/1`<br>
+<b>GET</b> all resources `curl -X GET "http://localhost:5000/api/ToDoList/GetAll" -H "accept: text/plain"`<br>
+     enpoint: `http://localhost:5000/api/ToDoList/GetAll`<br>
+<b>POST</p><br>
 ```
 {
   "id": 0,
