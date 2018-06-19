@@ -1,6 +1,6 @@
-<h2>
-ToDoList
-</h2>
+<h1>
+ToDoList v1
+</h1>
 
 
 <img src="https://travis-ci.org/lukasztomalczyk/ToDoList.svg?branch=master">
@@ -11,12 +11,12 @@ Applications can be downloaded from the hub docker:
 - <a href="https://hub.docker.com/r/lukasztomalczyk/todolist/">https://hub.docker.com/r/lukasztomalczyk/todolist</a>
 - `docker pull lukasztomalczyk/todolist`
 
-<h1>Used packages</h1>
-* Swashbuckle.AspNetCore Version="2.5.0"
-* FluentNHibernate Version="2.1.2"
-* Moq Version="4.8.3"
-* NUnit" Version="3.10.1"
-* FluentAssertions" Version="5.4.0"
+<b><u>Used packages</u></b>
+* Swashbuckle.AspNetCore 2.5.0<br>
+* FluentNHibernate 2.1.2<br>
+* Moq 4.8.3</br>
+* NUnit 3.10.1</br>
+* FluentAssertions" 5.4.0</br>
 
 Use the swagger to view the API documentation
 `http://localhost:[port]/swagger/`
