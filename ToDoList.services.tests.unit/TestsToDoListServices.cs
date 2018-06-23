@@ -29,15 +29,15 @@ namespace ToDoList.services.tests.unit
                 new TaskToDoItem() { Id = 2, Name = "name_2", Description = "description_2", CreationDate = new DateTime(2018,01,11), DateOfCompletion = new DateTime(2018,02,11), IsDone = false },
                 new TaskToDoItem() { Id = 3, Name = "name_3", Description = "description_3", CreationDate = new DateTime(2018,01,12), DateOfCompletion = new DateTime(2018,03,12), IsDone = false },
             };
-        
 
+        private readonly Mock<ISession> _sessionMock = new Mock<ISession>();
+        
         [Test]
         public void GetAllTaskToDo_DownloadingTasks_SchouldReturnListOfAllTask()
         {
             // Arrange
-            Mock<ISession> sessionMock = new Mock<ISession>();
-            sessionMock.Setup(p => p.Query<TaskToDoItem>()).Returns(_fakeDataBase.AsQueryable);
-            var toDoService = new ToDoListServices(sessionMock.Object);
+            _sessionMock.Setup(p => p.Query<TaskToDoItem>()).Returns(_fakeDataBase.AsQueryable);
+            var toDoService = new ToDoListServices(_sessionMock.Object);
             // Act
             var result = toDoService.GetAllTaskToDo();
             // Assert
@@ -48,9 +48,8 @@ namespace ToDoList.services.tests.unit
         public void GetById_RetrievesUserID_SchouldReturnTaskToDo()
         {
             // Arrange
-            Mock<ISession> sessionMock = new Mock<ISession>();
-            sessionMock.Setup(p => p.Get<TaskToDoItem>(1)).Returns(_fakeDataBase[1]);
-            var toDoService = new ToDoListServices(sessionMock.Object);
+            _sessionMock.Setup(p => p.Get<TaskToDoItem>(1)).Returns(_fakeDataBase[1]);
+            var toDoService = new ToDoListServices(_sessionMock.Object);
             // Act
             var result = toDoService.GetById(1);
             // Assert
@@ -75,8 +74,7 @@ namespace ToDoList.services.tests.unit
         public void CreateNewTaskToDo_PassingNullObject_ShouldReturnFalse()
         {
             // Arrange
-            Mock<ISession> sessionMock = new Mock<ISession>();
-            var toDoService = new ToDoListServices(sessionMock.Object);
+            var toDoService = new ToDoListServices(_sessionMock.Object);
             // Act
             var result = toDoService.CreateNewTaskToDo(null);
             // Assert
