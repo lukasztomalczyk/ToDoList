@@ -1,5 +1,6 @@
 language: csharp
 sudo: required
+mono: latest
 dotnet: 2.0
 services:
   - mysql
@@ -11,6 +12,6 @@ before_script:
   - pwd
   - ls -a
 script:
-  - ./scripts/dotnet-build.sh
-  - ./scripts/dotnet-test.sh
-  - ./scripts/dotnet-publish.sh
+  - scripts/dotnet-build.sh
+  - scripts/dotnet-test.sh
+  - scripts/dotnet-publish.sh
