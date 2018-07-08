@@ -1,6 +1,6 @@
 language: csharp
 sudo: required
-dotnet: latest
+dotnet: 2.0
 services:
   - mysql
 branches:
