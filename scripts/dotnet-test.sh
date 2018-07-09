@@ -1,1 +1,1 @@
-cd ../ && cd ToDoList.api.tests.unit && dotnet test
+cd ToDoList.api.tests.unit && dotnet test

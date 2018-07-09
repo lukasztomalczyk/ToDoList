@@ -1,1 +1,1 @@
-cd ../ && dotnet restore && dotnet build
+dotnet restore && dotnet build
