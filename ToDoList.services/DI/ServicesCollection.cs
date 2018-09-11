@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
+using NHibernate.Event;
+using ToDoList.Database;
 
 namespace ToDoList.services.DI
 {
@@ -6,7 +9,9 @@ namespace ToDoList.services.DI
     {
         public static void AddCollection(this IServiceCollection services)
         {
-            var settings =  new Mong
+
+
+            services.AddScoped<IRepository, Repository>();
         }
     }
 }
