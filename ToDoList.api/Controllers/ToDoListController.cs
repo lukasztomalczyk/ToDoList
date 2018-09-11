@@ -40,8 +40,7 @@ namespace ToDoList.api.Controllers
             if (ModelState.IsValid)
             {
                 _toDoListServices.CreateNewTaskToDo(taskToDoItem);
-                return Ok(taskToDoItem);
-            }
+                return Ok(taskToDoItem);}
             else
             {
                 return BadRequest(ModelState);

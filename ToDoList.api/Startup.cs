@@ -11,7 +11,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 using ToDoList.services;
-using ToDoList.services.FluentHibernate;
 using ToDoList.services.Services;
 using ToDoList.services.Services.Abstract;
 
@@ -29,14 +28,6 @@ namespace ToDoList.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<NHibernate.ISessionFactory>(
-                NHibernateSessionProvider.NHibernateSessionFactory(Configuration));
-            services.AddScoped<NHibernate.ISession>(factory =>
-                factory
-                    .GetServices<NHibernate.ISessionFactory>()
-                    .First()
-                    .OpenSession()
-            );
             services.AddScoped<IToDoListServices, ToDoListServices>();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info{ Title = "ToDoList API", Version = "v1" }); });
             services.AddMvc();

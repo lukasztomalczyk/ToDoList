@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ToDoList.services.FluentHibernate;
 
 namespace ToDoList.services.DI
 {
