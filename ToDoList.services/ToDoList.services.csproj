@@ -11,4 +11,7 @@
       <HintPath>..\..\..\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\1.1.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ToDoList.Database\ToDoList.Database.csproj" />
+  </ItemGroup>
 </Project>
