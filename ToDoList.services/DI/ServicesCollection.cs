@@ -11,6 +11,7 @@ namespace ToDoList.services.DI
         public static void AddCollection(this IServiceCollection services)
         {
             services.AddScoped<IMongoClient>(scop => new MongoClient("localhost"));
+            services.AddScoped<IRepository, Repository>();
         }
     }
 }

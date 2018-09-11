@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ToDoList.Database;
 using ToDoList.Database.Models;
 using ToDoList.services.Services.Abstract;
 
@@ -7,6 +8,12 @@ namespace ToDoList.services.Services
 {
     public class ToDoListServices : IToDoListServices
     {
+        private readonly IRepository _repository;
+
+        public ToDoListServices(IRepository repository)
+        {
+            _repository = repository;
+        }
         public Task<TaskToDoItem> Get(int id)
         {
             throw new System.NotImplementedException();
