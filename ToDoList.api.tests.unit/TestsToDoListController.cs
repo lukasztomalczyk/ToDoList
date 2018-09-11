@@ -6,9 +6,9 @@ using FluentAssertions.Common;
 using Moq;
 using NHibernate.Criterion;
 using NUnit.Framework;
-using ToDoList.services.Models;
 using ToDoList.services.Services.Abstract;
 using ToDoList.api.Controllers;
+using ToDoList.Database.Models;
 using ToDoList.services.Exceptions;
 
 namespace ToDoList.api.tests.unit
@@ -40,7 +40,7 @@ namespace ToDoList.api.tests.unit
         public async Task GetById_RequestTaskToDoById_ShouldReturnTaskToDoItem()
         {
             Mock<IToDoListServices> toDoServices = new Mock<IToDoListServices>();
-            toDoServices.Setup(p => p.GetById(1)).Returns(Task.FromResult(_fakeDataBase[1]));
+            toDoServices.Setup(p => p.Get(1)).Returns(Task.FromResult(_fakeDataBase[1]));
             var controller = new ToDoListController(toDoServices.Object);
 
             var result = await controller.GetById(1);

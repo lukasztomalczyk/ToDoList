@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
-using ToDoList.services.Models;
+using ToDoList.Database.Models;
 using ToDoList.services.Services.Abstract;
 
 namespace ToDoList.api.Controllers
@@ -22,13 +22,13 @@ namespace ToDoList.api.Controllers
         [HttpGet("GetById/{id}")]
         public async Task<TaskToDoItem> GetById(int id)
         {
-            return await _toDoListServices.GetById(id);
+            return await _toDoListServices.Get(id);
         }
 
         [HttpGet("GetAll")]
         public IEnumerable<TaskToDoItem> GetAll()
         {
-            return _toDoListServices.GetAllTaskToDo();
+            return _toDoListServices.GetAll();
         }
 
         [HttpPost]
@@ -39,7 +39,7 @@ namespace ToDoList.api.Controllers
         {
             if (ModelState.IsValid)
             {
-                _toDoListServices.CreateNewTaskToDo(taskToDoItem);
+                _toDoListServices.Create(taskToDoItem);
                 return Ok(taskToDoItem);}
             else
             {
@@ -54,7 +54,7 @@ namespace ToDoList.api.Controllers
         {
             if (ModelState.IsValid)
             {
-                _toDoListServices.DeleteTask(taskToDoItem);
+                _toDoListServices.Delete(taskToDoItem);
                 return Ok(taskToDoItem);
             }
             else
@@ -70,7 +70,7 @@ namespace ToDoList.api.Controllers
         {
             if (ModelState.IsValid)
             {
-                _toDoListServices.UpdateTask(taskToDoItem);
+                _toDoListServices.Update(taskToDoItem);
                 return Ok(taskToDoItem);
             }
             else

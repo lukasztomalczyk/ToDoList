@@ -28,7 +28,7 @@ namespace ToDoList.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IToDoListServices, ToDoListServices>();
+          //  services.AddScoped<IToDoListServices, ToDoListServices>();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info{ Title = "ToDoList API", Version = "v1" }); });
             services.AddMvc();
         }

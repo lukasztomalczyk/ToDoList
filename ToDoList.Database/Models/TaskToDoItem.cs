@@ -1,8 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ServiceModel.Channels;
 
-namespace ToDoList.services.Models
+namespace ToDoList.Database.Models
 {
     /// <summary>
     /// My entity, a task to do
