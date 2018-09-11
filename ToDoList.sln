@@ -12,14 +12,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.api.tests.unit", "ToDoList.api.tests.unit\ToDoList.api.tests.unit.csproj", "{5B50DE71-F439-4102-A7B8-6BC9EDAA1112}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{D24565A4-6FA3-4C21-A561-A9747819BB8D}"
-ProjectSection(SolutionItems) = preProject
-	dockerfile = dockerfile
-	docker-compose.yml = docker-compose.yml
-	.travis.yml = .travis.yml
-	scripts\dotnet-build.sh = scripts\dotnet-build.sh
-	scripts\dotnet-publish.sh = scripts\dotnet-publish.sh
-	scripts\dotnet-test.sh = scripts\dotnet-test.sh
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		dockerfile = dockerfile
+		docker-compose.yml = docker-compose.yml
+		.travis.yml = .travis.yml
+		scripts\dotnet-build.sh = scripts\dotnet-build.sh
+		scripts\dotnet-publish.sh = scripts\dotnet-publish.sh
+		scripts\dotnet-test.sh = scripts\dotnet-test.sh
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Database", "ToDoList.Database\ToDoList.Database.csproj", "{99252926-7941-48C2-8E12-670967E136C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,5 +84,17 @@ Global
 		{5B50DE71-F439-4102-A7B8-6BC9EDAA1112}.Release|x64.Build.0 = Release|Any CPU
 		{5B50DE71-F439-4102-A7B8-6BC9EDAA1112}.Release|x86.ActiveCfg = Release|Any CPU
 		{5B50DE71-F439-4102-A7B8-6BC9EDAA1112}.Release|x86.Build.0 = Release|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Debug|x64.Build.0 = Debug|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Debug|x86.Build.0 = Debug|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Release|x64.ActiveCfg = Release|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Release|x64.Build.0 = Release|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Release|x86.ActiveCfg = Release|Any CPU
+		{99252926-7941-48C2-8E12-670967E136C8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

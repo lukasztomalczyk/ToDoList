@@ -1,0 +1,15 @@
+.idea/
+ToDoList.api.tests.unit/bin/Docker/
+ToDoList.api/Docker/
+ToDoList.api/bin/
+ToDoList.api/obj/
+ToDoList.services.tests.unit/bin/
+ToDoList.services.tests.unit/obj/
+ToDoList.services/bin/
+ToDoList.services/obj/
+ToDoList.sln.DotSettings.user
+ToDoList.api.tests.unit/bin/
+ToDoList.api.tests.unit/obj/
+ToDoList.Database/bin
+ToDoList.Database/obj
+
