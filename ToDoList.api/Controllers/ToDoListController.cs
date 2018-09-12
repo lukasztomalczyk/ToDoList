@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using ToDoList.Database.Models;
+using ToDoList.services.DTO;
 using ToDoList.services.Services.Abstract;
 
 namespace ToDoList.api.Controllers
@@ -31,16 +32,14 @@ namespace ToDoList.api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] TaskToDoItem taskToDoItem)
+        public ActionResult<ResultObject> Create([FromBody] TaskToDoItem taskToDoItem)
         {
             if (ModelState.IsValid)
             {
-                _toDoListServices.Create(taskToDoItem);
-                return Ok(taskToDoItem);}
-            else
-            {
-                return BadRequest(ModelState);
+                var result = _toDoListServices.Create(taskToDoItem);
+                return StatusCode(result.StatusCode, result);
             }
+                return BadRequest(ModelState);
         }
 
         [HttpDelete]

@@ -12,6 +12,9 @@ namespace ToDoList.services.Validator
 
             RuleFor(p => p.Name)
                 .NotEmpty();
+            RuleFor(p => p.Description)
+                .NotNull()
+                .WithMessage("eroor");
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ToDoList.Database.Models
@@ -6,7 +7,7 @@ namespace ToDoList.Database.Models
     /// <summary>
     /// My entity, a task to do
     /// </summary>
-    public class TaskToDoItem
+    public class TaskToDoItem //: IValidatableObject
     {
        // [Required(ErrorMessage = "When creating a new ID record is required")]
         public virtual int Id { get; set; }
@@ -22,5 +23,10 @@ namespace ToDoList.Database.Models
         public virtual DateTime DateOfCompletion { get; set; }
         
         public virtual bool IsDone { get; set; }
+        
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+           yield return new ValidationResult("jais error", new []{ "dd" });
+        }
     }
 }

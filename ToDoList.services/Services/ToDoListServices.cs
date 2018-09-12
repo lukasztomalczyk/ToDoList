@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.Results;
 using ToDoList.Database;
 using ToDoList.Database.Models;
 using ToDoList.Database.Repository;
+using ToDoList.services.DTO;
 using ToDoList.services.Services.Abstract;
 using ToDoList.services.Validator;
 
@@ -31,12 +34,35 @@ namespace ToDoList.services.Services
             throw new System.NotImplementedException();
         }
 
-        public bool Create(TaskToDoItem item)
+        public ResultObject Create(TaskToDoItem item)
         {
             var validator = new TaskToDoItemValidator();
-            validator.Validate(item);
-            _repository.Create(item);
-            return true;
+            ValidationResult result = validator.Validate(item);
+
+            if (!result.IsValid)
+            {
+                var resultObject = new ResultObject();
+                var error = result.Errors.First();
+                resultObject.Errors = new [] 
+                   { 
+                       error.PropertyName, 
+                       error.ErrorMessage, 
+                   };
+                resultObject.Item = item;
+                resultObject.StatusCode = 201;
+
+                return resultObject;
+            }
+            else
+            {
+                var resultObject = new ResultObject();
+                
+                resultObject.Item = item;
+                resultObject.StatusCode = 200;
+
+                return resultObject;
+            }
+          
         }
 
         public void Delete(TaskToDoItem item)

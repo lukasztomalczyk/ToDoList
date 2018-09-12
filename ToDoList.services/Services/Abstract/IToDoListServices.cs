@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using ToDoList.Database.Models;
+using ToDoList.services.DTO;
 
 namespace ToDoList.services.Services.Abstract
 {
@@ -9,7 +11,7 @@ namespace ToDoList.services.Services.Abstract
         Task<TaskToDoItem> Get(int id);
         List<TaskToDoItem> GetAll();
         void Update(TaskToDoItem item);
-        bool Create(TaskToDoItem item);
+        ResultObject Create(TaskToDoItem item);
         void Delete(TaskToDoItem item);
     }
 }
