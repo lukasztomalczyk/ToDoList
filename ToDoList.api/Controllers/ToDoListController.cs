@@ -7,7 +7,7 @@ using ToDoList.services.Services.Abstract;
 
 namespace ToDoList.api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class ToDoListController : Controller
     {
         private readonly IToDoListServices _toDoListServices;
@@ -16,25 +16,21 @@ namespace ToDoList.api.Controllers
         {
             _toDoListServices = toDoListServices;
         }
-        // ToDo Command–query separation
 
 
-        [HttpGet("GetById/{id}")]
-        public async Task<TaskToDoItem> GetById(int id)
+        [HttpGet("{id:int}")]
+        public string GetById(int id)
         {
-            return await _toDoListServices.Get(id);
+            return id.ToString();
         }
 
-        [HttpGet("GetAll")]
-        public IEnumerable<TaskToDoItem> GetAll()
+        [HttpGet]
+        public string GetAll()
         {
-            return _toDoListServices.GetAll();
+            return "get all";
         }
 
         [HttpPost]
-        [ProducesResponseType(200, Type = typeof(TaskToDoItem))]
-        [ProducesResponseType(400)]
-        [ValidateAntiForgeryToken]
         public IActionResult Create([FromBody] TaskToDoItem taskToDoItem)
         {
             if (ModelState.IsValid)

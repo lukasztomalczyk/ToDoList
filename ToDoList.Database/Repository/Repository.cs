@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using ToDoList.Database.Models;
 
-namespace ToDoList.Database
+namespace ToDoList.Database.Repository
 {
     public class Repository : IRepository
     {

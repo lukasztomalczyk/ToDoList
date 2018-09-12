@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using ToDoList.Database.Models;
 
-namespace ToDoList.Database
+namespace ToDoList.Database.Repository
 {
     public interface IRepository
     {

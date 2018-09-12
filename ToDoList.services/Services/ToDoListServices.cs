@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 using ToDoList.Database;
 using ToDoList.Database.Models;
+using ToDoList.Database.Repository;
 using ToDoList.services.Services.Abstract;
+using ToDoList.services.Validator;
 
 namespace ToDoList.services.Services
 {
@@ -31,7 +33,9 @@ namespace ToDoList.services.Services
 
         public bool Create(TaskToDoItem item)
         {
-            throw new System.NotImplementedException();
+            var validator = new TaskToDoItemValidator();
+            validator.Validate(item);
+            return true;
         }
 
         public void Delete(TaskToDoItem item)

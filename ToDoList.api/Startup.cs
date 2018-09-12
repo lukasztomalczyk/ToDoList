@@ -10,7 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using ToDoList.Database.Settings;
 using ToDoList.services;
+using ToDoList.services.DI;
 using ToDoList.services.Services;
 using ToDoList.services.Services.Abstract;
 
@@ -28,7 +30,9 @@ namespace ToDoList.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-          //  services.AddScoped<IToDoListServices, ToDoListServices>();
+            
+            var test = services.Configure<MongoSettings>(Configuration.GetSection("MongoDbSettings"));
+            services.AddCollection();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info{ Title = "ToDoList API", Version = "v1" }); });
             services.AddMvc();
         }
