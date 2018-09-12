@@ -35,6 +35,7 @@ namespace ToDoList.services.Services
         {
             var validator = new TaskToDoItemValidator();
             validator.Validate(item);
+            _repository.Create(item);
             return true;
         }
 

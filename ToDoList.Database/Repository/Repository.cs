@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using ToDoList.Database.Models;
+using ToDoList.Database.Settings;
 
 namespace ToDoList.Database.Repository
 {
@@ -11,10 +12,10 @@ namespace ToDoList.Database.Repository
         private readonly IMongoCollection<TaskToDoItem> _mongoCollection;
         private const string NameDb ="ToDoList";
 
-        public Repository(IMongoClient mongoClient)
+        public Repository(IConnectMongoDb mongoClient)
         {
-            var mongo = mongoClient.GetDatabase(NameDb);
-            _mongoCollection = mongo.GetCollection<TaskToDoItem>(NameDb);
+            var mongo = mongoClient.Connect();
+            _mongoCollection = mongo.GetDatabase(NameDb).GetCollection<TaskToDoItem>("TaskToDo");
         }
         
         public Task<List<TaskToDoItem>> LoadAll()

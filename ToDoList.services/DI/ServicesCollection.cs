@@ -15,12 +15,7 @@ namespace ToDoList.services.DI
     {
         public static void AddCollection(this IServiceCollection services)
         {
-            services.AddScoped<IMongoClient>(scop =>
-            {
-                var clientSettings = new MongoClientSettings();
-                clientSettings.Server = new MongoServerAddress("localhost", 20217);
-                return new MongoClient(clientSettings);
-            });
+            services.AddScoped<IConnectMongoDb, ConnectMongoDb>();
             services.AddScoped<IRepository, Repository>();
             services.AddScoped<IToDoListServices, ToDoListServices>();
         }
