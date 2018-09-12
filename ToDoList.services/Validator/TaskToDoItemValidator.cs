@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using ToDoList.Database.Models;
+using ToDoList.services.Models;
 
 namespace ToDoList.services.Validator
 {
@@ -8,13 +8,15 @@ namespace ToDoList.services.Validator
         public TaskToDoItemValidator()
         {
             RuleFor(p => p.Id)
-                .NotEmpty();
+                .NotEmpty()
+                .WithMessage("Bad ID");
 
             RuleFor(p => p.Name)
-                .NotEmpty();
+                .NotEmpty()
+                .WithMessage("You must provide a name");
             RuleFor(p => p.Description)
                 .NotNull()
-                .WithMessage("eroor");
+                .WithMessage("You must provide a description");
         }
     }
 }

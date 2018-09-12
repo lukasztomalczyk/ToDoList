@@ -6,6 +6,7 @@ using NHibernate.Event;
 using ToDoList.Database;
 using ToDoList.Database.Repository;
 using ToDoList.Database.Settings;
+using ToDoList.services.Models;
 using ToDoList.services.Services;
 using ToDoList.services.Services.Abstract;
 
@@ -16,7 +17,7 @@ namespace ToDoList.services.DI
         public static void AddCollection(this IServiceCollection services)
         {
             services.AddScoped<IConnectMongoDb, ConnectMongoDb>();
-            services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IRepository<TaskToDoItem>, Repository<TaskToDoItem>>();
             services.AddScoped<IToDoListServices, ToDoListServices>();
         }
     }

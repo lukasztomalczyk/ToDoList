@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
-using ToDoList.Database.Models;
 using ToDoList.services.DTO;
+using ToDoList.services.Models;
 using ToDoList.services.Services.Abstract;
 
 namespace ToDoList.api.Controllers
@@ -18,60 +18,17 @@ namespace ToDoList.api.Controllers
             _toDoListServices = toDoListServices;
         }
 
-
-        [HttpGet("{id:int}")]
-        public string GetById(int id)
-        {
-            return id.ToString();
-        }
-
-        [HttpGet]
-        public string GetAll()
-        {
-            return "get all";
-        }
-
         [HttpPost]
-        public ActionResult<ResultObject> Create([FromBody] TaskToDoItem taskToDoItem)
+        public ActionResult<Result<TaskToDoItem>> Create([FromBody] TaskToDoItem taskToDoItem)
         {
             if (ModelState.IsValid)
             {
-                var result = _toDoListServices.Create(taskToDoItem);
-                return StatusCode(result.StatusCode, result);
+                var validate = _toDoListServices.Validate(taskToDoItem.ToResult());
+                var result = _toDoListServices.AddToDatabase(validate);
+                
+                return StatusCode((result.IsSuccess) ? 200 : 400, result);
             }
                 return BadRequest(ModelState);
-        }
-
-        [HttpDelete]
-        [ProducesResponseType(200, Type = typeof(TaskToDoItem))]
-        [ProducesResponseType(400)]
-        public IActionResult Delete([FromBody] TaskToDoItem taskToDoItem)
-        {
-            if (ModelState.IsValid)
-            {
-                _toDoListServices.Delete(taskToDoItem);
-                return Ok(taskToDoItem);
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
-        }
-        
-        [HttpPut]
-        [ProducesResponseType(200, Type = typeof(TaskToDoItem))]
-        [ProducesResponseType(400)]
-        public IActionResult Update([FromBody] TaskToDoItem taskToDoItem)
-        {
-            if (ModelState.IsValid)
-            {
-                _toDoListServices.Update(taskToDoItem);
-                return Ok(taskToDoItem);
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
         }
         
     }

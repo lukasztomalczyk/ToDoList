@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ToDoList.Database.Models;
 
 namespace ToDoList.Database.Repository
 {
-    public interface IRepository
+    public interface IRepository<T> where T : class
     {
-        Task<List<TaskToDoItem>> LoadAll();
-        void Create(TaskToDoItem item);
+        Task<List<T>> LoadAll();
+        void Create(T item);
     }
 }

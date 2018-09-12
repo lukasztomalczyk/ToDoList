@@ -8,8 +8,8 @@ using NHibernate.Criterion;
 using NUnit.Framework;
 using ToDoList.services.Services.Abstract;
 using ToDoList.api.Controllers;
-using ToDoList.Database.Models;
 using ToDoList.services.Exceptions;
+using ToDoList.services.Models;
 
 namespace ToDoList.api.tests.unit
 {
